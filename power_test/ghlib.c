@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
+#include"ghlib.h"
 
 int strlen_k(const char *str)
 {
@@ -20,6 +21,18 @@ void strcpy_k(char *destination, const char *source)
         count++;
     }
 }
+void strncpy_k(char* destination, const char* source, int start_index, int end_index)
+{
+    int count = 0;
+    int i = 0;
+    for(count=start_index, i=0;count<=end_index;count++,i++)
+    {
+        destination[i] = source[count];      
+    }
+    destination[i] = '\0';
+}
+
+
 
 int strcmp_k(const char *str1, const char *str2)
 {
@@ -48,6 +61,27 @@ int strcmp_k(const char *str1, const char *str2)
     }
     return 0; // equal
 }
+int strncmp_k(const char* str1, const char* str2,int n)
+{
+
+    int index = 0;
+    int max = 0;
+   
+    while (str1[index] != '\0' && str1[index] != -52 && n--!=0)
+    {
+        if (str1[index] > str2[index])
+        {
+            return 1; // str1 > str2
+        }
+        else if (str1[index] < str2[index])
+        {
+            return -1; // str1 < str2
+        }
+        index++;
+    }
+    return 0; // equal
+}
+
 
 // homework
 // 1 - strncpy
@@ -95,7 +129,7 @@ void left_trim_k(char *t_arr, const char *str, int count)
     }
 }
 
-void split_k(char *line, char *command, const char *str, const char ch, int count)
+void split2_k(char *line, char *command, const char *str, const char ch, int count)
 {
     int s_index = 0;
     char buffer[100] = {"\0"};
@@ -112,6 +146,29 @@ void split_k(char *line, char *command, const char *str, const char ch, int coun
     }
     left_trim_k(command, buffer, strlen_k(buffer));
 }
+void split_k(char result[][SPLIT_BUFFER_MAX], const char* str, const char ch, int count, int *linecount)
+{
+    int i = 0;
+    int start_index = 0;
+    int end_index = 0;
+    char buffer[SPLIT_BUFFER_MAX] = { "\0" };
+    int line = 0;   
+    while (str[i] != '\0')
+    {
+        i++;
+        if (str[i] == ch || str[i] == '\0')
+        {
+            end_index = i-1;
+            strncpy_k(result[line++], str, start_index, end_index);
+            start_index = i + 1;
+            end_index = 0;
+        }
+    }
+    *linecount = line;    
+    //left_trim_k(command, buffer, strlen_k(buffer));
+}
+
+
 
 int s2i_k(const char *line, int count)
 {

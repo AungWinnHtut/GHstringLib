@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ghlib.c" />
-    <ClCompile Include="power_test.cpp" />
+    <ClCompile Include="testcode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ghlib.h" />

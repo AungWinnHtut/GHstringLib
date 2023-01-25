@@ -8,7 +8,7 @@ int check_status();
 int startwith(const char* source,const char* phrase, int start_index, int count);
 
 
-int main()
+int power_test()
 {
 	setup();
 	while (1)

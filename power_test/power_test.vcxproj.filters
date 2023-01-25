@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="power_test.cpp">
+    <ClCompile Include="ghlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ghlib.c">
+    <ClCompile Include="testcode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
