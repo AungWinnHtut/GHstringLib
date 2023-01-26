@@ -1,3 +1,4 @@
 ﻿  ghlib.c
   testcode.cpp
+E:\ghstringlib\GHstringLib\power_test\testcode.cpp(8,7): warning C4101: 'data': unreferenced local variable
   power_test.vcxproj -> E:\ghstringlib\GHstringLib\power_test\x64\Debug\power_test.exe

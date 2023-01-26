@@ -232,3 +232,103 @@ void clear_str_k(char *str, int count)
         str[i] = '\0';
     }
 }
+//Finds the first occurrence of a given character in a string
+int strchr_k(const char* str, const char ch,int count)
+{
+    int i = 0;
+    int notfound = -1; //nout found
+    while (str[i] != '\0' && i < count)
+    {
+        if (str[i] == ch)
+        {
+            return i;
+        }
+        i++;
+    }
+    return notfound;
+}
+//Finds the last occurrence of a given character in a string
+int strrchr_k(const char* str, const char ch, int count)
+{
+    int i = count-1;
+    int found = -1; //nout found
+    while (str[i] != '\0' && i < count)
+    {
+        if (str[i] == ch)
+        {
+            return i;
+        }
+        i--;
+    }
+    return found;
+}
+//Finds the first occurrence of a given string in another string
+int strstr_k(const char* target, const char* str)
+{
+    //find first char
+    //if found compare string
+    //if not ok find first again
+    //else give index and exit
+
+
+    return 0;
+}
+
+INDEXES findAllch_k(const char* str, const char ch,int count)
+{
+    INDEXES indexes;
+    indexes.status = 0;
+    int ii = 0;
+    int si = 0;
+   
+    while (str[si] != '\0' && si < count)
+    {
+        if (str[si] == ch)
+        {
+            indexes.status = 1;
+            indexes.indexes[ii++] = si;
+        }
+        si++;
+    }
+    indexes.indexes_size = ii;
+    return indexes;
+}
+
+INDEXES findAllstr_k(const char* target, const char* str, int target_count, int str_count)
+{
+    INDEXES result;
+    INDEXES data;
+    data.status = 0;
+    int si = 0;
+
+    result = findAllch_k(target, str[0], strlen_k(target));
+    if (result.status)
+    {
+        for (int i = 0; i < result.indexes_size; i++)
+        {
+            int start_index = result.indexes[i];
+            int status = strnncmp_k(target, str, strlen_k(target), strlen_k(str), start_index);
+            if (status)
+            {
+                data.indexes[0] = start_index;
+            }
+        }
+    }
+    else {
+        data.status = 0;
+    }    
+    data.indexes_size = si;
+    return data;
+}
+
+int strnncmp_k(const char* str1, const char* str2, int str1_size,int str2_size,int start_index)
+{    
+    for (int i = 0; i < str2_size; i++)
+    {
+        if (str1[start_index + i] != str2[i])
+        {         
+            return 0;
+        }
+    }
+    return 1;
+}
